@@ -1,0 +1,13 @@
+.page-link{
+    background: none;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    margin: 0.5rem;
+}
+.link-disable{
+    color: rgb(150, 150, 150) !important ;
+    &:hover{
+        color: rgb(150, 150, 150) !important ;
+    }
+}

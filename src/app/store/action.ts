@@ -1,0 +1,2 @@
+export const API_CALL_ERROR = "API_CALL_ERROR";
+export const INIT_ADMIN_MENU = "INIT_ADMIN_MENU";

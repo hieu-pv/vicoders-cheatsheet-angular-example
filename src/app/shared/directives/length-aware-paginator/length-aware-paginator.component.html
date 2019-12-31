@@ -1,0 +1,30 @@
+<div class="row" *ngIf="paginator !== undefined && (alwaysDisplay === true || this.paginator.getTotalPages() > 1)">
+  <div class="col-md-12 col-sm-12 text-center col-xs-12">
+    <ul class="pagination  d-inline animated fadeIn">
+      <li class="page-item" > 
+          <!-- [disabled]="prevDisable" -->
+        <a *ngIf="prevDisable === true" class="page-link border-0" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(getCurrentPage(), 'prev')">Previous</a>
+        <span *ngIf="prevDisable !== true" class="page-link border-0" ngClass="link-disable">Previous</span>
+      </li>
+      <li class="page-item" [ngClass]="{'active': isCurrentPage(1)}">
+        <a class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(1)">1</a>
+      </li>
+      <li class="page-item left-show-more" *ngIf="!isHideLeftShowMore(getCurrentPage())">
+        <a class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(pagesInBetween[0] - numberPageInBetween )">...</a>
+      </li>
+      <li class="page-item" [ngClass]="{'active': isCurrentPage(page)}" *ngFor="let page of pagesInBetween">
+        <a class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(page)">{{ page }}</a>
+      </li>
+      <li class="page-item right-show-more" *ngIf="!isHideRightShowMore(getCurrentPage())">
+        <a class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(pagesInBetween[pagesInBetween.length - 1] + 1)">...</a>
+      </li>
+      <li class="page-item" [ngClass]="{'active': isCurrentPage(pages.length)}" *ngIf="pages.length > 1">
+        <a class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(pages.length)">{{ pages.length }}</a>
+      </li>
+      <li class="page-item" >
+        <a *ngIf="nextDisable === true" class="page-link" [routerLink]="getCurrentUrl()" [queryParams]="this.resolveParams(getCurrentPage(), 'next')">Next</a>
+        <span *ngIf="nextDisable !== true" class="page-link border-0" ngClass="link-disable">Next</span>
+      </li>
+    </ul>
+  </div>
+</div>
